@@ -18,8 +18,14 @@ function drawGrid(cols, rows) {
 
 function paintOnMouseOver() {
   cells.forEach((cell) => {
+    let opacity = 0.1;
     cell.addEventListener("mouseover", () => {
       cell.style.setProperty("background-color", "#000");
+      cell.style.setProperty("opacity", opacity);
+      const compStyle = getComputedStyle(cell);
+      if (compStyle.opacity !== 1) {
+        cell.style.setProperty("opacity", (opacity += 0.1));
+      }
     });
   });
 }
@@ -29,15 +35,20 @@ function clearGrid() {
 }
 
 function setNewGrid() {
-//   clearGrid();
   let newGridSize = parseInt(prompt("New grid size? (1-100)"));
   if (newGridSize > 100) {
-      alert("Can't use sizes larger than 100\nSetting size to 100");
-      newGridSize = 100;
-  } else if(!newGridSize){
-      newGridSize = 16;
+    alert("Can't use sizes larger than 100\nSetting size to 100");
+    newGridSize = 100;
+  } else if (!newGridSize) {
+    newGridSize = 16;
+  } else if (newGridSize < 1) {
+    alert("Can't use sizes less than 1\nSetting size to 1");
+    newGridSize = 1;
   }
   drawGrid(newGridSize, newGridSize);
+  const gridSize = document.querySelector('#grid-size');
+  gridSize.textContent = `${newGridSize} x ${newGridSize}`;
+
   cells = document.querySelectorAll(".grid-item");
   paintOnMouseOver();
 }
