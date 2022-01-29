@@ -18,7 +18,7 @@ function drawGrid(cols, rows) {
 
 function paintOnMouseOver() {
   cells.forEach((cell) => {
-    let opacity = 0.1;
+    let opacity = 0;
     cell.addEventListener("mouseover", () => {
       cell.style.setProperty("background-color", "#000");
       cell.style.setProperty("opacity", opacity);
