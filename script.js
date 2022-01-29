@@ -35,7 +35,7 @@ function clearGrid() {
 }
 
 function setNewGrid() {
-  let newGridSize = parseInt(prompt("New grid size? (1-100)"));
+  let newGridSize = parseInt(prompt("New grid size? (1-100)\nDefault: 16 x 16"));
   if (newGridSize > 100) {
     alert("Can't use sizes larger than 100\nSetting size to 100");
     newGridSize = 100;
