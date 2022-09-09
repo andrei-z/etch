@@ -6,4 +6,4 @@ Each pass adds another 10% of black (using opacity property).
 After 10 passes the cell is completely black.
 
 Demo:
-https://an-dreus.github.io/etch/
+https://dersc.github.io/etch/
